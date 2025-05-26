@@ -21,9 +21,23 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Project
+🎓 O‘QUV MARKAZI ERP TIZIMI
 
+## Tizim Maqsadi
+
+O‘quv markazining barcha ichki jarayonlarini raqamlashtirish va avtomatlashtirish:
+
+- Talabalarni boshqarish
+- Kurslarni yuritish
+- O‘qituvchilar va jadval
+- To‘lovlar va davomat
+- Imtihonlar va sertifikatlash
+- Real vaqt hisobotlar va ogohlantirishlar
+
+## Description
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+
 
 ## Project setup
 

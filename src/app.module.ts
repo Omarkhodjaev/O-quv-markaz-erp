@@ -11,6 +11,7 @@ import { NotificationsModule } from './modules/notifications/notifications.modul
 import { ReportsModule } from './modules/reports/reports.module';
 import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { User } from './modules/users/entities/user.entity';
 
 @Module({
   imports: [
@@ -28,7 +29,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
       username: process.env.DB_USER,
       password: process.env.DB_PASS,
       database: process.env.DB_NAME,
-      models: [],
+      models: [User],
       autoLoadModels: true,
       synchronize: true,
     }),

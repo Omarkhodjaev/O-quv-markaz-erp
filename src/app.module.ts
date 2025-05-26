@@ -1,17 +1,39 @@
 import { Module } from '@nestjs/common';
-import { UsersModule } from './users/users.module';
-import { AuthModule } from './auth/auth.module';
-import { CoursesModule } from './courses/courses.module';
-import { EnrollmentsModule } from './enrollments/enrollments.module';
-import { AttendanceModule } from './attendance/attendance.module';
-import { PaymentsModule } from './payments/payments.module';
-import { ExamsModule } from './exams/exams.module';
-import { ExamsResultsModule } from './exams-results/exams-results.module';
-import { NotificationsModule } from './notifications/notifications.module';
-import { ReportsModule } from './reports/reports.module';
+import { UsersModule } from './modules/users/users.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { CoursesModule } from './modules/courses/courses.module';
+import { EnrollmentsModule } from './modules/enrollments/enrollments.module';
+import { AttendanceModule } from './modules/attendance/attendance.module';
+import { PaymentsModule } from './modules/payments/payments.module';
+import { ExamsModule } from './modules/exams/exams.module';
+import { ExamsResultsModule } from './modules/exams-results/exams-results.module';
+import { NotificationsModule } from './modules/notifications/notifications.module';
+import { ReportsModule } from './modules/reports/reports.module';
+import { ConfigModule } from '@nestjs/config';
+import { SequelizeModule } from '@nestjs/sequelize';
 
 @Module({
   imports: [
+    //env config
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+      isGlobal: true,
+    }),
+
+    //database config
+    SequelizeModule.forRoot({
+      dialect: 'postgres',
+      host: process.env.DB_HOST,
+      port: Number(process.env.DB_PORT),
+      username: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
+      models: [],
+      autoLoadModels: true,
+      synchronize: true,
+    }),
+
+    //Modullar
     UsersModule,
     AuthModule,
     CoursesModule,

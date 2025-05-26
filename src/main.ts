@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -8,6 +9,7 @@ async function bootstrap() {
   //server port
   const PORT = process.env.PORT ?? 3000;
 
+  //swagger setup
   const config = new DocumentBuilder()
     .setTitle(`O'quv markaz`)
     .setDescription(`O'quv markaz ERP api`)
@@ -18,6 +20,9 @@ async function bootstrap() {
 
   const documentOrFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-doc', app, documentOrFactory);
+
+  //validation pipe
+  app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);

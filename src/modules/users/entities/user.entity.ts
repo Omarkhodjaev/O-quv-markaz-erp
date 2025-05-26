@@ -7,12 +7,13 @@ import {
   Table,
 } from 'sequelize-typescript';
 import { UserRole } from 'src/common/enums/user-roles.enum';
+import { CreateUserDto } from '../dto/create-user.dto';
 
 @Table({
   tableName: 'User',
   underscored: true,
 })
-export class User extends Model<User> {
+export class User extends Model<User, CreateUserDto> {
   @PrimaryKey
   @Default(DataType.UUIDV4)
   @Column({
